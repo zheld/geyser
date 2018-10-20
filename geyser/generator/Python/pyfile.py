@@ -8,7 +8,7 @@ from generator.Python.pyitem import FunctionItem
 
 class PyFile( File ):
     def __init__( self, name, parent=None, only_create=False ):
-        super( PyFile, self ).__init__( name + '.py', parent, only_create )
+        super( PyFile, self ).__init__( name + '.py', "python", parent, only_create )
         self.import_block = RowBlockItem( )
         self.addItem( self.import_block )
         self.body = [ '# coding=utf-8' ]
