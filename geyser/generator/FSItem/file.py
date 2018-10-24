@@ -1,13 +1,14 @@
 import subprocess
 
-from generator.FSItem.fs_item import FSItem
+from geyser.generator.FSItem.fs_item import FSItem
+import geyser
 
-head = '''
-{comm}
-{comm} Document generated automatically by GEYSER v0.01
+head = '''{comm}
+{comm} Document generated automatically by GEYSER v{version}
 {comm}
 {comm} Warning: any edits to this file will be lost
 {comm}
+
 '''
 
 lng_comm = {"golang": "//", "python": "#", "sql": "--", "c++": "//"}
@@ -22,10 +23,10 @@ class File(FSItem):
         self.execute = False
 
     def _createHeaderFile(self):
-        if self.lang == "":
+        if self.lang == "" or self.only_create:
             return ""
         comm = lng_comm[self.lang]
-        return head.format(comm = comm)
+        return head.format(comm = comm, version = geyser.__version__)
 
     def Build(self):
         for item in self.getList():

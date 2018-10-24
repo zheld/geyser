@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.data import GoDataObject
+from geyser.resources_go.data_object.data import GoDataObject
 
 
 class GoStaticData( GoDataObject ):

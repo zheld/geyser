@@ -2,10 +2,10 @@
 # coding=utf-8
 import os
 
-from resources_sql.converter import *
-from manifest_creater import ManifestFile
-from generator.FSItem.directory import Directory
-from resources_go.copy_core import CopyCoreHere
+from geyser.resources_sql.converter import *
+from geyser.manifest_creater import ManifestFile
+from geyser.generator.FSItem.directory import Directory
+from geyser.resources_go.copy_core import CopyCoreHere
 
 methods = {"int64": "ToInt64",
            "string": "ToString",
@@ -126,7 +126,7 @@ class GoServiceCompiler:
         self.db_sql.Write(body)
 
         converter = DataBaseConverter(self.service, self.structure_db_json, conf)
-        body = converter.GetCode()
+        body = converter.Execute()
         self.db_sql.Write(body)
 
         # copying custom stored procedures

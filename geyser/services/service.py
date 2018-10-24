@@ -1,12 +1,12 @@
-from resources_go.data_object.data import GoDataObject
-from resources_go.data_object.datacenter.datacenter import Datacenter
-from resources_go.data_object.dictionary_data.dictionary_data import GoDictionaryData
-from resources_go.data_object.static_data import GoStaticData
-from resources_go.data_object.relative_index.relativeindex import RelativeIndex
-from go_service_compiler import GoServiceCompiler
-from item import Item
-from resources_go.data_object.list_data.list_data import GoDataList
-from resources_go.types import go_types
+from geyser.resources_go.data_object.data import GoDataObject
+from geyser.resources_go.data_object.datacenter.datacenter import Datacenter
+from geyser.resources_go.data_object.dictionary_data.dictionary_data import GoDictionaryData
+from geyser.resources_go.data_object.static_data import GoStaticData
+from geyser.resources_go.data_object.relative_index.relativeindex import RelativeIndex
+from geyser.go_service_compiler import GoServiceCompiler
+from geyser.item import Item
+from geyser.resources_go.data_object.list_data.list_data import GoDataList
+from geyser.resources_go.types import go_types
 
 
 class ServiceBase( Item ):

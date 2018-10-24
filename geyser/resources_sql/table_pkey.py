@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_sql.field import *
+from geyser.resources_sql.field import *
 from .table import Table
-from resources_go.types import go_types
+from geyser.resources_go.types import go_types
 
 first_exc = "The first in the table is not the primary key !! In the table, the PK must always come first!"
 

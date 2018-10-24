@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_sql.index import *
+from geyser.resources_sql.index import *
 
 
 class Table(Item):

@@ -2,7 +2,7 @@
 # coding=utf-8
 import json
 
-from resources_sql.index import *
+from geyser.resources_sql.index import *
 
 FIELDS = 'fields'
 NAME = 'name'
@@ -19,16 +19,30 @@ class DataBaseConverter:
     def __init__(self, service, struct_file, conf):
         self.service = service
         self.struct_file = struct_file
-        self.dbname = conf.db_name
-        self.dbhost = conf.db_host
-        self.dbport = conf.db_port
-        self.dbuser = conf.db_user
-        self.dbpswd = conf.db_pswd
+        self.conf = conf
+        self.conn = self._get_connect()
+        self.cur = self.conn.cursor()
 
-    def GetCode(self):
+    def _get_connect(self):
+        import psycopg2
+        conn = psycopg2.connect(host = self.conf.db_host,
+                                port = self.conf.db_port,
+                                dbname = self.conf.db_name,
+                                user = self.conf.db_user,
+                                password = self.conf.db_pswd,
+                                )
+        return conn
+
+    def _convert(self, sql):
+        print("convert db: " + self.conf.db_name + " ...")
+        # print(sql)
+        self.cur.execute(sql)
+        self.conn.commit()
+        print("   DONE.")
+
+    def Execute(self):
         # Get the code for creating or updating the table, gets the current structure, runs through the current tables
         # service, and gives the old table (if any) and a new comparison
-
         body = []
         current_struct = self.GetCurrentStructure()
         new_structure = {}
@@ -62,6 +76,11 @@ class DataBaseConverter:
         # record conversion history
         body += [self.getHistoryConvertCode(struct_str)]
 
+        sql = "\n".join(body)
+        self._convert(sql)
+        self.cur.close()
+        self.conn.close()
+
         return body
 
     def getCurrentStructure(self, structure):
@@ -76,22 +95,14 @@ class DataBaseConverter:
     def GetCurrentStructure(self):
         # Get the current structure of the service database
         try:
-            import psycopg2
-            conn = psycopg2.connect(host = self.dbhost,
-                                    port = self.dbport,
-                                    dbname = self.dbname,
-                                    user = self.dbuser,
-                                    password = self.dbpswd
-                                    )
-            cur = conn.cursor()
             sql = '''
             SELECT structure
             FROM history_conversions
             WHERE date = ( SELECT max(date) FROM history_conversions )'''
 
-            cur.execute(sql)
+            self.cur.execute(sql)
             try:
-                from_db = cur.fetchone()[0]
+                from_db = self.cur.fetchone()[0]
             except Exception as e:
                 print("error on query db: " + str(e))
                 return ""
@@ -99,13 +110,11 @@ class DataBaseConverter:
             struct_data = from_db
 
             print("previous struct db: " + struct_data)
-            cur.close()
-            conn.close()
-
             jobject = json.loads(struct_data)
             return jobject
         except Exception as e:
-            print("database converter error: " + str(e))
+            self.conn.rollback()
+            # print("database converter error: " + str(e))
             return ""
 
     def getHistoryConvertCode(self, struct):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.go_methods.abs_method import AbstractMethod
-from resources_go.types import go_types
+from geyser.resources_go.data_object.go_methods.abs_method import AbstractMethod
+from geyser.resources_go.types import go_types
 
 
 class Change( AbstractMethod ):

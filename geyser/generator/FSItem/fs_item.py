@@ -1,6 +1,6 @@
 import os
 
-from generator.generator_item import GeneratorItem
+from geyser.generator.generator_item import GeneratorItem
 
 
 class FSItem(GeneratorItem):

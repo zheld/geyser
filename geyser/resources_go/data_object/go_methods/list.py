@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.go_methods.abs_method import AbstractMethod
+from geyser.resources_go.data_object.go_methods.abs_method import AbstractMethod
 
 
 class List( AbstractMethod ):

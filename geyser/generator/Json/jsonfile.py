@@ -1,4 +1,4 @@
-from generator.FSItem.file import File
+from geyser.generator.FSItem.file import File
 
 
 class JsonFile(File):

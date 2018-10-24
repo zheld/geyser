@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-from item import Item
-from resources_go.types import go_types
+from geyser.item import Item
+from geyser.resources_go.types import go_types
 
 
 class GoItem( Item ):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from generator.FSItem.directory import Directory
+from geyser.generator.FSItem.directory import Directory
 
 
 class GoPackage( Directory ):

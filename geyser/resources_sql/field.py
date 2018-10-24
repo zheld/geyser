@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.types import go_types
-from item import *
+from geyser.resources_go.types import go_types
+from geyser.item import *
 
 
 class Field( Item ):
@@ -29,7 +29,7 @@ class Field( Item ):
         return self.field.getService( )
 
     def isData(self):
-        from resources_go.data_object.data import GoDataObject
+        from geyser.resources_go.data_object.data import GoDataObject
         return isinstance(self.field, GoDataObject)
 
     def isForeign( self ):

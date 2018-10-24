@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from item import Item
+from geyser.item import Item
 
 
 class PyItem( Item ):

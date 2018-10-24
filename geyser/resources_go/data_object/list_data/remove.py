@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.go_methods import AbstractMethod
+from geyser.resources_go.data_object.go_methods import AbstractMethod
 
 
 class RemoveListDataGoMethod( AbstractMethod ):

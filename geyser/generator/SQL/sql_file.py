@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from generator.FSItem.file import File
+from geyser.generator.FSItem.file import File
 
 
 class SQLFile( File ):

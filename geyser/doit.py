@@ -1,6 +1,6 @@
 import os
 
-from go_service_compiler import GoServiceCompiler
+from geyser.go_service_compiler import GoServiceCompiler
 
 
 # build or update service

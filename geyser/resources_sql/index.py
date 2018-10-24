@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from item import *
+from geyser.item import *
 
 
 class Index( Item ):

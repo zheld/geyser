@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-from generator.FSItem.file import File
-from generator.Go.goitem import *
+from geyser.generator.FSItem.file import File
+from geyser.generator.Go.goitem import *
 
 
 class GoFile(File):

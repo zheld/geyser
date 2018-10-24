@@ -1,8 +1,8 @@
 import os
-from generator.FSItem.fs_item import FSItem
-from generator.FSItem.file import File
-from generator.FSItem.symlink import Symlink
-from generator.FSItem.dir_copy import CopyDirectory
+from geyser.generator.FSItem.fs_item import FSItem
+from geyser.generator.FSItem.file import File
+from geyser.generator.FSItem.symlink import Symlink
+from geyser.generator.FSItem.dir_copy import CopyDirectory
 
 
 class Directory(FSItem):
@@ -10,12 +10,12 @@ class Directory(FSItem):
         super(Directory, self).__init__(name, parent)
 
     def Build(self):
-        print("directory: ", self.Name())
         # create a directory if there is none
         if self.Name():
             try:
-                os.mkdir(self.getPath())
-                print('Directory created [{}]'.format(self.Name()))
+                if self.Name():
+                    os.mkdir(self.getPath())
+                    print('Directory created [{}]'.format(self.Name()))
             except Exception as e:
                 pass
 
@@ -47,14 +47,14 @@ class Directory(FSItem):
     # Go
     def addGoPackage(self, name):
         # add python nested package
-        from generator.Go.gopackage import GoPackage
+        from geyser.generator.Go.gopackage import GoPackage
         pkg = GoPackage(name, self)
         self.addItem(pkg)
         return pkg
 
     def addGoFile(self, name, package_name=None, only_create=False):
         # attach python file
-        from generator.Go.gofile import GoFile
+        from geyser.generator.Go.gofile import GoFile
         gf = GoFile(name, self, package_name, only_create)
         self.addItem(gf)
         return gf
@@ -62,14 +62,14 @@ class Directory(FSItem):
     # Python
     def addPackage(self, name):
         # add python nested package
-        from generator.Python.package import Package
+        from geyser.generator.Python.package import Package
         pkg = Package(name, self)
         self.addItem(pkg)
         return pkg
 
     def addPyFile(self, name, only_create=False):
         # attach python file
-        from generator.Python.pyfile import PyFile
+        from geyser.generator.Python.pyfile import PyFile
         pf = PyFile(name, self, only_create = only_create)
         self.addItem(pf)
         return pf
@@ -77,14 +77,14 @@ class Directory(FSItem):
     # Json
     def addJsonFile(self, name, only_create=False):
         # attach json file
-        from generator.Json.jsonfile import JsonFile
+        from geyser.generator.Json.jsonfile import JsonFile
         f = JsonFile(name, self, only_create = only_create)
         self.addItem(f)
         return f
 
     def addSQLFile(self, name, only_create=False):
         # attach sql file
-        from generator.SQL.sql_file import SQLFile
+        from geyser.generator.SQL.sql_file import SQLFile
         sql = SQLFile(name, self, only_create = only_create)
         self.addItem(sql)
         return sql

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from generator.FSItem.fs_item import FSItem
+from geyser.generator.FSItem.fs_item import FSItem
 import os
 
 

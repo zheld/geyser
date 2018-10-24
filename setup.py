@@ -1,7 +1,8 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+import geyser
 
 setup(name = "geyser",
-      version = "0.01",
+      version = geyser.__version__,
       description = "Golang service compiler",
       url = "https://github.com/zheld/geyser",
 
@@ -31,7 +32,7 @@ setup(name = "geyser",
           'Programming Language :: Python :: 3.6',
       ],
       keywords = "golang service compiler",
-      packages = ["geyser"],
+      packages = find_packages(),
 
-      install_requires = ["GitPython", "pika", "redis", "amqp", "psycopg2"],
+      install_requires = ["GitPython", "psycopg2-binary"],
       )

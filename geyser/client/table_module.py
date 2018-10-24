@@ -4,7 +4,7 @@ from methods.delete import Delete
 from methods.list import List
 
 from generator.Python.pyfile import PyFile
-from resources_python.methods.update import Update
+from geyser.resources_python.methods.update import Update
 
 imp = '''from core import *
 from bl.m_crumbs.crumbs_list import CrumbsList

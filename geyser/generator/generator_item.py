@@ -1,4 +1,4 @@
-from item import Item
+from geyser.item import Item
 
 
 class GeneratorItem( Item ):

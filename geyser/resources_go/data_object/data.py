@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.go_methods.insert import InsertGoMethod
-from resources_go.data_object.go_methods.insert_read import InsertReadGoMethod
-from resources_go.data_object.go_methods.delete import Delete
-from resources_go.data_object.go_methods.list import List
-from resources_go.data_object.go_methods.list_filter import ListFilter
-from resources_go.data_object.go_methods.read import ReadGoMethod
-from resources_go.data_object.go_methods.string import StringGoMethod
-from resources_go.data_object.go_methods.update import UpdateGoMethod
-from resources_go.data_object.go_methods.set import UpdateByGoMethod
-from resources_go.data_object.go_methods.get_id import GetId
-from resources_go.data_object.go_methods.upsert import UpsertGoMethod
-from resources_go.data_object.go_methods.read_by_unique import ReadByUnique
-from resources_go.data_object.go_methods.insert_read_light import InsertReadGoLight
+from geyser.resources_go.data_object.go_methods.insert import InsertGoMethod
+from geyser.resources_go.data_object.go_methods.insert_read import InsertReadGoMethod
+from geyser.resources_go.data_object.go_methods.delete import Delete
+from geyser.resources_go.data_object.go_methods.list import List
+from geyser.resources_go.data_object.go_methods.list_filter import ListFilter
+from geyser.resources_go.data_object.go_methods.read import ReadGoMethod
+from geyser.resources_go.data_object.go_methods.string import StringGoMethod
+from geyser.resources_go.data_object.go_methods.update import UpdateGoMethod
+from geyser.resources_go.data_object.go_methods.set import UpdateByGoMethod
+from geyser.resources_go.data_object.go_methods.get_id import GetId
+from geyser.resources_go.data_object.go_methods.upsert import UpsertGoMethod
+from geyser.resources_go.data_object.go_methods.read_by_unique import ReadByUnique
+from geyser.resources_go.data_object.go_methods.insert_read_light import InsertReadGoLight
 
-from resources_go.data_object.go_methods.new import NewGoMethod
-from resources_sql.table import *
-from resources_sql.table_dictionary import *
-from resources_go.data_object.go_methods.fields import Fields
-from resources_go.data_object.extensions.static_dict import StaticDict
-from resources_go.data_object.extensions.cache_id import CacheID
-from resources_sql.field import *
+from geyser.resources_go.data_object.go_methods.new import NewGoMethod
+from geyser.resources_sql.table import *
+from geyser.resources_sql.table_dictionary import *
+from geyser.resources_go.data_object.go_methods.fields import Fields
+from geyser.resources_go.data_object.extensions.static_dict import StaticDict
+from geyser.resources_go.data_object.extensions.cache_id import CacheID
+from geyser.resources_sql.field import *
 
 class GoDataObject( Item ):
     def __init__( self, name, parent=None, public=True ):

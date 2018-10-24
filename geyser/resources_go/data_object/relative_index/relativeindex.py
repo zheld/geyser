@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.data import GoDataObject
-from resources_go.data_object.datacenter.datacenter import Datacenter
-from resources_go.types import go_types
+from geyser.resources_go.data_object.data import GoDataObject
+from geyser.resources_go.data_object.datacenter.datacenter import Datacenter
+from geyser.resources_go.types import go_types
 
 
 class RelativeIndex( GoDataObject ):

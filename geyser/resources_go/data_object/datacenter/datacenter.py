@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_go.data_object.data import GoDataObject
-from resources_go.types import go_types
+from geyser.resources_go.data_object.data import GoDataObject
+from geyser.resources_go.types import go_types
 from .add import Add
 from .get import Get
 from .len import Len

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from resources_python.methods.abs_method import AbstractMethod
+from geyser.resources_python.methods.abs_method import AbstractMethod
 
 
 class Delete(AbstractMethod):
