@@ -33,14 +33,18 @@ class DataBaseConverter:
                                 )
         return conn
 
-    def _convert(self, sql):
+    def Convert(self, sql):
         print("convert db: " + self.conf.db_name + " ...")
         # print(sql)
         self.cur.execute(sql)
         self.conn.commit()
         print("   DONE.")
 
-    def Execute(self):
+    def conn_close(self):
+        self.cur.close()
+        self.conn.close()
+
+    def GetTableCode(self):
         # Get the code for creating or updating the table, gets the current structure, runs through the current tables
         # service, and gives the old table (if any) and a new comparison
         body = []
@@ -75,11 +79,6 @@ class DataBaseConverter:
 
         # record conversion history
         body += [self.getHistoryConvertCode(struct_str)]
-
-        sql = "\n".join(body)
-        self._convert(sql)
-        self.cur.close()
-        self.conn.close()
 
         return body
 

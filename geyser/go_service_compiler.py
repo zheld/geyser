@@ -126,7 +126,7 @@ class GoServiceCompiler:
         self.db_sql.Write(body)
 
         converter = DataBaseConverter(self.service, self.structure_db_json, conf)
-        body = converter.Execute()
+        body = converter.GetTableCode()
         self.db_sql.Write(body)
 
         # copying custom stored procedures
@@ -139,6 +139,10 @@ class GoServiceCompiler:
         self.db_sql.Write(body)
         for data in self.service.getDataList():
             data.Build(self.src_dir, self.db_sql, self)
+
+        # write changes into db
+        sql = self.db_sql.Text()
+        converter.Convert(sql)
 
         # main.go
         self.buidMain()

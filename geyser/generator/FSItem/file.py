@@ -1,7 +1,7 @@
 import subprocess
 
-from geyser.generator.FSItem.fs_item import FSItem
 import geyser
+from geyser.generator.FSItem.fs_item import FSItem
 
 head = '''{comm}
 {comm} Document generated automatically by GEYSER v{version}
@@ -29,13 +29,20 @@ class File(FSItem):
         return head.format(comm = comm, version = geyser.__version__)
 
     def Build(self):
+        text = self.Text()
+        self.Save(text)
+
+    def Text(self):
         for item in self.getList():
             build = item.Build()
             if isinstance(build, list):
                 build = '\n'.join(build)
             self.body.append(build)
         fl = '\n'.join(self.body)
-        self.Save(self._createHeaderFile() + fl)
+        text = self._createHeaderFile() + fl
+        text = text.replace("@>", "}")
+        text = text.replace("<@", "{")
+        return text
 
     def Save(self, fl_str):
         if self.only_create:
@@ -46,8 +53,6 @@ class File(FSItem):
             except:
                 pass
 
-        fl_str = fl_str.replace("@>", "}")
-        fl_str = fl_str.replace("<@", "{")
         # Create or overwrite file in current directory
         fl = open(self.Name(), 'w')
         fl.write(fl_str)
